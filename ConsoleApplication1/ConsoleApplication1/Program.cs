@@ -10,6 +10,11 @@ namespace FacundoMartinGordillo
     {
         static string equivocado = "VALOR ERRÓNEO, POR FAVOR INGRESE UN NUEVO VALOR." + Environment.NewLine;
 
+        static string values =
+                    "¿Qué quiere calcular?" + Environment.NewLine +
+                    "1: ÁREA" + Environment.NewLine +
+                    "2: PERÍMETRO" + Environment.NewLine;
+
         public static int pedirValorNumerico()
         {
             int valorNumerico;
@@ -19,18 +24,26 @@ namespace FacundoMartinGordillo
         }
         public static bool seguir(int a)
         {
-            if(a == 1) { return true; }
-            else { return false; }
+            string muchasGracias =
+                "¡Muchas gracias por usar nuestro software!";
+            if (a == 1) { return true; }
+            else {
+                Console.WriteLine(muchasGracias);
+                return false;
+            }
         }
 
         static void Main(string[] args)
         {   
             string bienvenida = "¡Ahora puede calcular el área y el perímetro de una de las siguientes formas geométricas!" + Environment.NewLine
-                + "Por favor ingrese un valor." + Environment.NewLine 
+                + "Por favor ingrese un valor (con o sin coma). TODO SE CALCULA EN cm" + Environment.NewLine 
                 + "*** 1: Calcular cuadrado" + Environment.NewLine
                 + "*** 2: Calcular triangulo" + Environment.NewLine
                 + "*** 3: Calcular circulo" + Environment.NewLine;
-            string seguirTxt = "¿Quiere hacer otra consulta?";
+            string seguirTxt = 
+                "¿Quiere hacer otra consulta?" + Environment.NewLine +
+                "1: SI" + Environment.NewLine +
+                "OTRA TECLA: NO" + Environment.NewLine;
 
             bool a = false;
             do
@@ -40,17 +53,17 @@ namespace FacundoMartinGordillo
                 switch (inputNum)
                 {
                     case 1:
-                        CalculoCuadrado cuadrado = new CalculoCuadrado();
+                        new CalculoCuadrado();
                         Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
                         a = seguir(pedirValorNumerico());
                         break;
                     case 2:
-                        CalculoTriangulo triangulo = new CalculoTriangulo();
+                        new CalculoTriangulo();
                         Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
                         a = seguir(pedirValorNumerico());
                         break;
                     case 3:
-                        CalculoCirculo circulo = new CalculoCirculo();
+                        new CalculoCirculo();
                         Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
                         a = seguir(pedirValorNumerico());
                         break;
@@ -84,15 +97,61 @@ namespace FacundoMartinGordillo
         }
         class CalculoCuadrado : CalculoForma
         {
+            int decision;
+
+            public CalculoCuadrado()
+            {
+                bool sigue = true;
+                double respuestaCuadrado;
+                do
+                {
+                    Console.WriteLine(values);
+                    decision = pedirValorNumerico();
+                    switch (decision)
+                    {
+                        case 1: //AREA
+                            respuestaCuadrado = calcularArea();
+                            Console.WriteLine("El área es " + respuestaCuadrado);
+                            sigue = false;
+                            break;
+                        case 2: //PERIMETRO
+                            respuestaCuadrado = calcularPerimetro();
+                            Console.WriteLine("El perímetro es " + respuestaCuadrado);
+                            sigue = false;
+                            break;
+                        default:
+                            Console.WriteLine(equivocado);
+                            sigue = true;
+                            continue;
+                    }
+
+                } while (sigue == true);
+            }
             public double calcularArea()
             {
-                throw new NotImplementedException();
+                Console.WriteLine("Por favor, ingrese uno de sus lados:");
+                int a = pedirValorNumerico();
+                return calcularArea(a);
+            }
+
+            public double calcularArea(int a)
+            {
+                return Math.Pow(a, 2);
             }
 
             public double calcularPerimetro()
             {
-                throw new NotImplementedException();
+                Console.WriteLine("Por favor, ingrese uno de sus lados:");
+                int a = pedirValorNumerico();
+                return calcularPerimetro(a);
             }
+
+            public double calcularPerimetro(int a)
+            {
+                return a * 4;
+            }
+
+
         }
         class CalculoTriangulo : CalculoForma
         {
@@ -107,10 +166,6 @@ namespace FacundoMartinGordillo
                     "1: Triángulo Equilátero" + Environment.NewLine +
                     "2: Triángulo Isósceles" + Environment.NewLine +
                     "3: Triángulo Escaleno";
-                string valoresDiferentes2 =
-                    "¿Qué quiere calcular?" + Environment.NewLine +
-                    "1: ÁREA" + Environment.NewLine +
-                    "2: PERÍMETRO" + Environment.NewLine;
                 do
                 {
                     Console.WriteLine(valoresDiferentes);
@@ -142,11 +197,11 @@ namespace FacundoMartinGordillo
 
                 do
                 {
-                    Console.WriteLine(valoresDiferentes2);
+                    Console.WriteLine(values);
                     decision = pedirValorNumerico();
                     switch (decision)
                     {
-                        case 1:
+                        case 1: //AREA
                             respuestaTriangulo = calcularArea();
                             if(respuestaTriangulo == 440F)
                             {
@@ -158,7 +213,7 @@ namespace FacundoMartinGordillo
                             }
                             sigue = false;
                             break;
-                        case 2:
+                        case 2: // PERIMETRO
                             respuestaTriangulo = calcularPerimetro();
                             Console.WriteLine("El perímetro es: " + respuestaTriangulo);
                             sigue = false;
