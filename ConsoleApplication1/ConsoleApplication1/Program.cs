@@ -8,6 +8,7 @@ namespace FacundoMartinGordillo
 {
     class TP2
     {
+        static string equivocado = "VALOR ERRÓNEO, POR FAVOR INGRESE UN NUEVO VALOR." + Environment.NewLine;
 
         public static int pedirValorNumerico()
         {
@@ -25,29 +26,28 @@ namespace FacundoMartinGordillo
                 + "*** 1: Calcular cuadrado" + Environment.NewLine
                 + "*** 2: Calcular triangulo" + Environment.NewLine
                 + "*** 3: Calcular circulo" + Environment.NewLine;
-            string equivocado = "VALOR ERRÓNEO, POR FAVOR INGRESE UN NUEVO VALOR.";
 
             bool a = false;
-
-            Console.WriteLine(bienvenida);
-            int inputNum = pedirValorNumerico();
-
             do
             {
+                Console.WriteLine(bienvenida);
+                int inputNum = pedirValorNumerico();
                 switch (inputNum)
                 {
                     case 1:
                         CalculoCuadrado cuadrado = new CalculoCuadrado();
+                        a = false;
                         break;
                     case 2:
-                        CalculoTriangulo triangulo = new CalculoTriangulo(inputNum);
+                        CalculoTriangulo triangulo = new CalculoTriangulo();
+                        a = false;
                         break;
                     case 3:
                         CalculoCirculo circulo = new CalculoCirculo();
+                        a = false;
                         break;
                     default:
                         Console.WriteLine(equivocado);
-                        inputNum = pedirValorNumerico();
                         a = true;
                         continue;
                 }
@@ -88,26 +88,113 @@ namespace FacundoMartinGordillo
         }
         class CalculoTriangulo : CalculoForma
         {
-            public CalculoTriangulo(int decision)
+            int opcion;
+            int decision;
+            public CalculoTriangulo()
             {
-                switch(decision)
+                bool sigue = true;
+
+                string valoresDiferentes = 
+                    "1: Triángulo Equilátero" + Environment.NewLine +
+                    "2: Triángulo Isósceles" + Environment.NewLine +
+                    "3: Triángulo Escaleno";
+                string valoresDiferentes2 =
+                    "¿Qué quiere calcular?" + Environment.NewLine +
+                    "1: ÁREA" + Environment.NewLine +
+                    "2: PERÍMETRO" + Environment.NewLine;
+                do
                 {
-                    case 1:
-                        Console.WriteLine();
-                        break;
-                    case 2:
-                        Console.WriteLine();
-                        break;
-                    case 3:
-                        Console.WriteLine();
-                        break;
-                    default:
-                        Console.WriteLine();
-                        break;
-                }
+                    Console.WriteLine(valoresDiferentes);
+                    decision = pedirValorNumerico();
+                    switch (decision)
+                    {
+                        case 1:
+                            Console.WriteLine();
+                            opcion = 1;
+                            sigue = false;
+                            break;
+                        case 2:
+                            Console.WriteLine();
+                            opcion = 2;
+                            sigue = false;
+                            break;
+                        case 3:
+                            Console.WriteLine();
+                            opcion = 3;
+                            sigue = false;
+                            break;
+                        default:
+                            Console.WriteLine(equivocado);
+                            sigue = true;
+                            continue;
+                    }
+                } while (sigue == true);
+
+
+                do
+                {
+                    Console.WriteLine(valoresDiferentes2);
+                    decision = pedirValorNumerico();
+                    switch (decision)
+                    {
+                        case 1:
+                            Console.WriteLine();
+                            sigue = false;
+                            break;
+                        case 2:
+                            Console.WriteLine();
+                            sigue = false;
+                            break;
+                        default:
+                            Console.WriteLine(equivocado);
+                            sigue = true;
+                            continue;
+                    }
+
+                } while (sigue == true);
             }
 
             public float calcularArea()
+            {
+                int a;
+                int b;
+                int c;
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine("Por favor, ingrese uno de sus lados:");
+                        a = pedirValorNumerico();
+                        calcularArea(a);
+                        break;
+                    case 2:
+                        Console.WriteLine("Por favor, ingrese uno de los lados (NO la base):");
+                        a = pedirValorNumerico();
+                        Console.WriteLine("Ahora ingrese la base:");
+                        b = pedirValorNumerico();
+                        calcularArea(a, b);
+                        break;
+                    case 3:
+                        Console.WriteLine("Por favor, ingrese uno de los lados:");
+                        a = pedirValorNumerico();
+                        Console.WriteLine("Ahora, ingrese otra de los lados:");
+                        b = pedirValorNumerico();
+                        Console.WriteLine("Y por último, ingrese el lado restante:");
+                        c = pedirValorNumerico();
+                        calcularArea(a, b, c);
+                        break;
+                }
+                return 440F;
+            }
+
+            private float calcularArea(int a)
+            {
+                throw new NotImplementedException();
+            }
+            private float calcularArea(int a, int b)
+            {
+                throw new NotImplementedException();
+            }
+            private float calcularArea(int a, int b, int c)
             {
                 throw new NotImplementedException();
             }
