@@ -17,15 +17,20 @@ namespace FacundoMartinGordillo
             Int32.TryParse(valor, out valorNumerico);
             return valorNumerico;
         }
+        public static bool seguir(int a)
+        {
+            if(a == 1) { return true; }
+            else { return false; }
+        }
 
         static void Main(string[] args)
-        {
-            
+        {   
             string bienvenida = "¡Ahora puede calcular el área y el perímetro de una de las siguientes formas geométricas!" + Environment.NewLine
                 + "Por favor ingrese un valor." + Environment.NewLine 
                 + "*** 1: Calcular cuadrado" + Environment.NewLine
                 + "*** 2: Calcular triangulo" + Environment.NewLine
                 + "*** 3: Calcular circulo" + Environment.NewLine;
+            string seguirTxt = "¿Quiere hacer otra consulta?";
 
             bool a = false;
             do
@@ -36,15 +41,18 @@ namespace FacundoMartinGordillo
                 {
                     case 1:
                         CalculoCuadrado cuadrado = new CalculoCuadrado();
-                        a = false;
+                        Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
+                        a = seguir(pedirValorNumerico());
                         break;
                     case 2:
                         CalculoTriangulo triangulo = new CalculoTriangulo();
-                        a = false;
+                        Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
+                        a = seguir(pedirValorNumerico());
                         break;
                     case 3:
                         CalculoCirculo circulo = new CalculoCirculo();
-                        a = false;
+                        Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
+                        a = seguir(pedirValorNumerico());
                         break;
                     default:
                         Console.WriteLine(equivocado);
@@ -58,30 +66,30 @@ namespace FacundoMartinGordillo
 
         interface CalculoForma
         {
-            float calcularArea();
-            float calcularPerimetro();
+            double calcularArea();
+            double calcularPerimetro();
         }
 
         class CalculoCirculo : CalculoForma
         {
-            public float calcularArea()
+            public double calcularArea()
             {
                 throw new NotImplementedException();
             }
 
-            public float calcularPerimetro()
+            public double calcularPerimetro()
             {
                 throw new NotImplementedException();
             }
         }
         class CalculoCuadrado : CalculoForma
         {
-            public float calcularArea()
+            public double calcularArea()
             {
                 throw new NotImplementedException();
             }
 
-            public float calcularPerimetro()
+            public double calcularPerimetro()
             {
                 throw new NotImplementedException();
             }
@@ -90,7 +98,8 @@ namespace FacundoMartinGordillo
         {
             int opcion;
             int decision;
-            public CalculoTriangulo()
+            double respuestaTriangulo;
+            public CalculoTriangulo() // ¡¡¡Constructor!!!
             {
                 bool sigue = true;
 
@@ -138,11 +147,20 @@ namespace FacundoMartinGordillo
                     switch (decision)
                     {
                         case 1:
-                            Console.WriteLine();
+                            respuestaTriangulo = calcularArea();
+                            if(respuestaTriangulo == 440F)
+                            {
+                                Console.WriteLine("Disculpa, pero si es un triángulo rectángulo, NO puede ser equilátero.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("El área es " + respuestaTriangulo);
+                            }
                             sigue = false;
                             break;
                         case 2:
-                            Console.WriteLine();
+                            respuestaTriangulo = calcularPerimetro();
+                            Console.WriteLine("El perímetro es: " + respuestaTriangulo);
                             sigue = false;
                             break;
                         default:
@@ -154,24 +172,27 @@ namespace FacundoMartinGordillo
                 } while (sigue == true);
             }
 
-            public float calcularArea()
+            bool tricky = false;
+
+            public double calcularPerimetro() // Heredada de Interfaz
             {
                 int a;
                 int b;
                 int c;
+                double respuesta = (Double)440;
                 switch (opcion)
                 {
                     case 1:
                         Console.WriteLine("Por favor, ingrese uno de sus lados:");
                         a = pedirValorNumerico();
-                        calcularArea(a);
+                        respuesta = (Double)calcularPerimetro(a);
                         break;
                     case 2:
-                        Console.WriteLine("Por favor, ingrese uno de los lados (NO la base):");
+                        Console.WriteLine("Por favor, ingrese uno de los lados iguales:");
                         a = pedirValorNumerico();
-                        Console.WriteLine("Ahora ingrese la base:");
+                        Console.WriteLine("Ahora ingrese el lado restante:");
                         b = pedirValorNumerico();
-                        calcularArea(a, b);
+                        respuesta = (Double)calcularPerimetro(a, b);
                         break;
                     case 3:
                         Console.WriteLine("Por favor, ingrese uno de los lados:");
@@ -180,30 +201,76 @@ namespace FacundoMartinGordillo
                         b = pedirValorNumerico();
                         Console.WriteLine("Y por último, ingrese el lado restante:");
                         c = pedirValorNumerico();
-                        calcularArea(a, b, c);
+                        respuesta = (Double)calcularPerimetro(a, b, c);
                         break;
+                }
+                return respuesta;
+            }
+            private double calcularPerimetro(double a) // Equilatero
+            {
+                return a * 3;
+            }
+            private double calcularPerimetro(double a, double b) // Isosceles
+            {
+                return 2 * a + b;
+            }
+            private double calcularPerimetro(double a, double b, double c) // Escaleno
+            {
+                return a + b + c;
+            }
+
+            public double calcularArea() // Heredada de Interfaz
+            {
+                bool sigue = true;
+                double a;
+                double b;
+                double respuesta = 440F;
+
+                do
+                {
+                    Console.WriteLine(
+                        "¿Es un triángulo rectángulo?" + Environment.NewLine +
+                        "1: SI" + Environment.NewLine +
+                        "2: NO" + Environment.NewLine);
+                    decision = pedirValorNumerico();
+                    switch (decision)
+                    {
+                        case 1:
+                            Console.WriteLine("Entonces te pido uno de los catetos:");
+                            a = (Double)pedirValorNumerico();
+                            Console.WriteLine("Ahora te pido el otro cateto:");
+                            b = (Double)pedirValorNumerico();
+                            respuesta = calcularArea(a, b);
+                            sigue = false;
+                            break;
+                        case 2:
+                            Console.WriteLine("Entonces te pido la base:");
+                            a = (Double)pedirValorNumerico();
+                            Console.WriteLine("Ahora te pido la altura:");
+                            b = (Double)pedirValorNumerico();
+                            respuesta = (a * b) / 2;
+                            sigue = false;
+                            break;
+                        default:
+                            Console.WriteLine(equivocado);
+                            sigue = true;
+                            continue;
+                    }
+
+                } while (sigue == true);
+                return respuesta;
+            }
+            public double calcularArea(double a, double b) // Rectángulo
+            {
+                if (!tricky)
+                {
+                    return (a * b) / 2;
                 }
                 return 440F;
             }
+        }
 
-            private float calcularArea(int a)
-            {
-                throw new NotImplementedException();
-            }
-            private float calcularArea(int a, int b)
-            {
-                throw new NotImplementedException();
-            }
-            private float calcularArea(int a, int b, int c)
-            {
-                throw new NotImplementedException();
-            }
 
-            public float calcularPerimetro()
-            {
-                throw new NotImplementedException();
-            }
         }
 
     }
-}
