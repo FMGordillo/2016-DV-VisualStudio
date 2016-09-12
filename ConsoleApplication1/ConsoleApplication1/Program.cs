@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FacundoMartinGordillo
 {
-    class TP2
+    class TP2_01
     {
         static string equivocado = "VALOR ERRÓNEO, POR FAVOR INGRESE UN NUEVO VALOR." + Environment.NewLine;
 
@@ -32,15 +32,14 @@ namespace FacundoMartinGordillo
                 return false;
             }
         }
-
-        static void Main(string[] args)
-        {   
+        public static void tp02_01()
+        {
             string bienvenida = "¡Ahora puede calcular el área y el perímetro de una de las siguientes formas geométricas!" + Environment.NewLine
-                + "Por favor ingrese un valor (con o sin coma). TODO SE CALCULA EN cm" + Environment.NewLine 
+                + "Por favor ingrese un valor (con o sin coma). TODO SE CALCULA EN cm" + Environment.NewLine
                 + "*** 1: Calcular cuadrado" + Environment.NewLine
                 + "*** 2: Calcular triangulo" + Environment.NewLine
                 + "*** 3: Calcular circulo" + Environment.NewLine;
-            string seguirTxt = 
+            string seguirTxt =
                 "¿Quiere hacer otra consulta?" + Environment.NewLine +
                 "1: SI" + Environment.NewLine +
                 "OTRA TECLA: NO" + Environment.NewLine;
@@ -73,8 +72,7 @@ namespace FacundoMartinGordillo
                         continue;
                 }
             } while (a == true);
-            
-            
+
         }
 
         interface CalculoForma
@@ -85,6 +83,37 @@ namespace FacundoMartinGordillo
 
         class CalculoCirculo : CalculoForma
         {
+            int decision;
+
+            public CalculoCirculo()
+            {
+                bool sigue = true;
+                double respuestaCirculo;
+
+                do
+                {
+                    Console.WriteLine(values);
+                    decision = pedirValorNumerico();
+                    switch (decision)
+                    {
+                        case 1: //AREA
+                            respuestaCirculo = calcularArea();
+                            Console.WriteLine("El área es " + respuestaCirculo);
+                            sigue = false;
+                            break;
+                        case 2: //PERIMETRO
+                            respuestaCirculo = calcularPerimetro();
+                            Console.WriteLine("El perímetro es " + respuestaCirculo);
+                            sigue = false;
+                            break;
+                        default:
+                            Console.WriteLine(equivocado);
+                            sigue = true;
+                            continue;
+                    }
+
+                } while (sigue == true);
+            }
             public double calcularArea()
             {
                 throw new NotImplementedException();
