@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApplication1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,15 +33,16 @@ namespace FacundoMartinGordillo
             do
             {
                 Console.WriteLine(nuevoPrograma);
-                inputNum = TP2_01.pedirValorNumerico();
+                inputNum = ResourcesFacu.pedirValorNumerico();
                 switch (inputNum)
                 {
                     case 0:
                         Console.WriteLine();
+                        TP0 tp0 = new TP0();
                         break;
                     case 1:
                         Console.WriteLine(tp02);
-                        inputNum = TP2_01.pedirValorNumerico();
+                        inputNum = ResourcesFacu.pedirValorNumerico();
                         bool f = false;
                         do
                         {

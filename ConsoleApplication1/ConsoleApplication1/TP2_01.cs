@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApplication1;
 
 namespace FacundoMartinGordillo
 {
@@ -15,24 +16,6 @@ namespace FacundoMartinGordillo
                     "1: ÁREA" + Environment.NewLine +
                     "2: PERÍMETRO" + Environment.NewLine +
                     "3: Salir" + Environment.NewLine;
-
-        public static int pedirValorNumerico()
-        {
-            int valorNumerico;
-            string valor = Console.ReadLine();
-            Int32.TryParse(valor, out valorNumerico);
-            return valorNumerico;
-        }
-        public static bool seguir(int a)
-        {
-            string muchasGracias =
-                "¡Muchas gracias por usar nuestro software!";
-            if (a == 1) { return true; }
-            else {
-                Console.WriteLine(muchasGracias);
-                return false;
-            }
-        }
         public static void tp02_01()
         {
             string bienvenida = "¡Ahora puede calcular el área y el perímetro de una de las siguientes formas geométricas!" + Environment.NewLine
@@ -49,23 +32,23 @@ namespace FacundoMartinGordillo
             do
             {
                 Console.WriteLine(bienvenida);
-                int inputNum = pedirValorNumerico();
+                int inputNum = ResourcesFacu.pedirValorNumerico();
                 switch (inputNum)
                 {
                     case 1:
                         new CalculoCuadrado();
                         Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
-                        a = seguir(pedirValorNumerico());
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 2:
                         new CalculoTriangulo();
                         Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
-                        a = seguir(pedirValorNumerico());
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 3:
                         new CalculoCirculo();
                         Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
-                        a = seguir(pedirValorNumerico());
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     default:
                         Console.WriteLine(equivocado);
@@ -94,7 +77,7 @@ namespace FacundoMartinGordillo
                 do
                 {
                     Console.WriteLine(values);
-                    decision = pedirValorNumerico();
+                    decision = ResourcesFacu.pedirValorNumerico();
                     switch (decision)
                     {
                         case 1: //AREA
@@ -121,14 +104,14 @@ namespace FacundoMartinGordillo
             public double calcularArea()
             {
                 Console.WriteLine("Ingrese el radio:");
-                int radio = pedirValorNumerico();
+                int radio = ResourcesFacu.pedirValorNumerico();
                 return Math.PI * (radio^2);
             }
 
             public double calcularPerimetro()
             {
                 Console.WriteLine("Por favor ingrese el radio");
-                int radio = pedirValorNumerico();
+                int radio = ResourcesFacu.pedirValorNumerico();
                 return Math.PI * (radio * 2);
             }
         }
@@ -143,7 +126,7 @@ namespace FacundoMartinGordillo
                 do
                 {
                     Console.WriteLine(values);
-                    decision = pedirValorNumerico();
+                    decision = ResourcesFacu.pedirValorNumerico();
                     switch (decision)
                     {
                         case 1: //AREA
@@ -170,7 +153,7 @@ namespace FacundoMartinGordillo
             public double calcularArea()
             {
                 Console.WriteLine("Por favor, ingrese uno de sus lados:");
-                int a = pedirValorNumerico();
+                int a = ResourcesFacu.pedirValorNumerico();
                 return calcularArea(a);
             }
 
@@ -182,7 +165,7 @@ namespace FacundoMartinGordillo
             public double calcularPerimetro()
             {
                 Console.WriteLine("Por favor, ingrese uno de sus lados:");
-                int a = pedirValorNumerico();
+                int a = ResourcesFacu.pedirValorNumerico();
                 return calcularPerimetro(a);
             }
 
@@ -210,7 +193,7 @@ namespace FacundoMartinGordillo
                 do
                 {
                     Console.WriteLine(valoresDiferentes);
-                    decision = pedirValorNumerico();
+                    decision = ResourcesFacu.pedirValorNumerico();
                     switch (decision)
                     {
                         case 1:
@@ -242,7 +225,7 @@ namespace FacundoMartinGordillo
                 do
                 {
                     Console.WriteLine(values);
-                    decision = pedirValorNumerico();
+                    decision = ResourcesFacu.pedirValorNumerico();
                     switch (decision)
                     {
                         case 1: //AREA
@@ -286,23 +269,23 @@ namespace FacundoMartinGordillo
                 {
                     case 1:
                         Console.WriteLine("Por favor, ingrese uno de sus lados:");
-                        a = pedirValorNumerico();
+                        a = ResourcesFacu.pedirValorNumerico();
                         respuesta = (Double)calcularPerimetro(a);
                         break;
                     case 2:
                         Console.WriteLine("Por favor, ingrese uno de los lados iguales:");
-                        a = pedirValorNumerico();
+                        a = ResourcesFacu.pedirValorNumerico();
                         Console.WriteLine("Ahora ingrese el lado restante:");
-                        b = pedirValorNumerico();
+                        b = ResourcesFacu.pedirValorNumerico();
                         respuesta = (Double)calcularPerimetro(a, b);
                         break;
                     case 3:
                         Console.WriteLine("Por favor, ingrese uno de los lados:");
-                        a = pedirValorNumerico();
+                        a = ResourcesFacu.pedirValorNumerico();
                         Console.WriteLine("Ahora, ingrese otra de los lados:");
-                        b = pedirValorNumerico();
+                        b = ResourcesFacu.pedirValorNumerico();
                         Console.WriteLine("Y por último, ingrese el lado restante:");
-                        c = pedirValorNumerico();
+                        c = ResourcesFacu.pedirValorNumerico();
                         respuesta = (Double)calcularPerimetro(a, b, c);
                         break;
                     case 4:
@@ -336,22 +319,22 @@ namespace FacundoMartinGordillo
                         "¿Es un triángulo rectángulo?" + Environment.NewLine +
                         "1: SI" + Environment.NewLine +
                         "2: NO" + Environment.NewLine);
-                    decision = pedirValorNumerico();
+                    decision = ResourcesFacu.pedirValorNumerico();
                     switch (decision)
                     {
                         case 1:
                             Console.WriteLine("Entonces te pido uno de los catetos:");
-                            a = (Double)pedirValorNumerico();
+                            a = (Double)ResourcesFacu.pedirValorNumerico();
                             Console.WriteLine("Ahora te pido el otro cateto:");
-                            b = (Double)pedirValorNumerico();
+                            b = (Double)ResourcesFacu.pedirValorNumerico();
                             respuesta = calcularArea(a, b);
                             sigue = false;
                             break;
                         case 2:
                             Console.WriteLine("Entonces te pido la base:");
-                            a = (Double)pedirValorNumerico();
+                            a = (Double)ResourcesFacu.pedirValorNumerico();
                             Console.WriteLine("Ahora te pido la altura:");
-                            b = (Double)pedirValorNumerico();
+                            b = (Double)ResourcesFacu.pedirValorNumerico();
                             respuesta = (a * b) / 2;
                             sigue = false;
                             break;
