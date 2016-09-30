@@ -10,30 +10,67 @@ namespace FacundoMartinGordillo
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine(
+            int inputNum;
+            string nuevoPrograma = 
                 "¿Qué programa quiere ejecutar?" + Environment.NewLine +
-                "1. EJERCICIO 1" + Environment.NewLine +
-                "2. EJERCICIO 2" + Environment.NewLine +
-                "3. EJERCICIO 3" + Environment.NewLine
-                );
+                "0. TP 001 (el primero de todos)" + Environment.NewLine +
+                "1. TP 01" + Environment.NewLine +
+                "2. TP 02" + Environment.NewLine +
+                "3. NINGUNO, ME QUIERO IR" + Environment.NewLine;
+
+            string tp02 =
+                "¿Qué ejercicio?" + Environment.NewLine +
+                "1." + Environment.NewLine +
+                "2." + Environment.NewLine;
+
+            string wrong = "Ingresaste un valor inválido." + Environment.NewLine;
+
+            string despedida = "¡Muchas gracias por jugar un rato conmigo!" + Environment.NewLine +
+                "** Presione cualquier tecla para salir.";
+
             bool a = false;
-            int inputNum = TP2_01.pedirValorNumerico();
             do
             {
+                Console.WriteLine(nuevoPrograma);
+                inputNum = TP2_01.pedirValorNumerico();
                 switch (inputNum)
                 {
+                    case 0:
+                        Console.WriteLine();
+                        break;
                     case 1:
-                        TP2_01.tp02_01();
+                        Console.WriteLine(tp02);
+                        inputNum = TP2_01.pedirValorNumerico();
+                        bool f = false;
+                        do
+                        {
+                            switch (inputNum)
+                            {
+                                case 1:
+                                    TP2_01.tp02_01();
+                                    f = false;
+                                    break;
+                                case 2:
+                                    f = false;
+                                    break;
+                                default:
+                                    Console.WriteLine(wrong);
+                                    f = true;
+                                    break;
+                            }
+                        } while (f == true);
+
                         a = false;
                         break;
                     case 2:
                         a = false;
                         break;
                     case 3:
+                        Console.WriteLine(despedida);
                         a = false;
                         break;
                     default:
+                        Console.WriteLine(wrong);
                         a = true;
                         break;
                 }

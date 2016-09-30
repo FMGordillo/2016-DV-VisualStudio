@@ -13,7 +13,8 @@ namespace FacundoMartinGordillo
         static string values =
                     "¿Qué quiere calcular?" + Environment.NewLine +
                     "1: ÁREA" + Environment.NewLine +
-                    "2: PERÍMETRO" + Environment.NewLine;
+                    "2: PERÍMETRO" + Environment.NewLine +
+                    "3: Salir" + Environment.NewLine;
 
         public static int pedirValorNumerico()
         {
@@ -103,7 +104,10 @@ namespace FacundoMartinGordillo
                             break;
                         case 2: //PERIMETRO
                             respuestaCirculo = calcularPerimetro();
-                            Console.WriteLine("El perímetro es " + respuestaCirculo);
+                            Console.WriteLine("El perímetro (circunferencia) es " + respuestaCirculo);
+                            sigue = false;
+                            break;
+                        case 3: // Salir
                             sigue = false;
                             break;
                         default:
@@ -116,12 +120,16 @@ namespace FacundoMartinGordillo
             }
             public double calcularArea()
             {
-                throw new NotImplementedException();
+                Console.WriteLine("Ingrese el radio:");
+                int radio = pedirValorNumerico();
+                return Math.PI * (radio^2);
             }
 
             public double calcularPerimetro()
             {
-                throw new NotImplementedException();
+                Console.WriteLine("Por favor ingrese el radio");
+                int radio = pedirValorNumerico();
+                return Math.PI * (radio * 2);
             }
         }
         class CalculoCuadrado : CalculoForma
@@ -146,6 +154,9 @@ namespace FacundoMartinGordillo
                         case 2: //PERIMETRO
                             respuestaCuadrado = calcularPerimetro();
                             Console.WriteLine("El perímetro es " + respuestaCuadrado);
+                            sigue = false;
+                            break;
+                        case 3: // Salir
                             sigue = false;
                             break;
                         default:
@@ -194,7 +205,8 @@ namespace FacundoMartinGordillo
                 string valoresDiferentes = 
                     "1: Triángulo Equilátero" + Environment.NewLine +
                     "2: Triángulo Isósceles" + Environment.NewLine +
-                    "3: Triángulo Escaleno";
+                    "3: Triángulo Escaleno" + Environment.NewLine +
+                    "4: Salir";
                 do
                 {
                     Console.WriteLine(valoresDiferentes);
@@ -214,6 +226,9 @@ namespace FacundoMartinGordillo
                         case 3:
                             Console.WriteLine();
                             opcion = 3;
+                            sigue = false;
+                            break;
+                        case 4: // Salir
                             sigue = false;
                             break;
                         default:
@@ -245,6 +260,9 @@ namespace FacundoMartinGordillo
                         case 2: // PERIMETRO
                             respuestaTriangulo = calcularPerimetro();
                             Console.WriteLine("El perímetro es: " + respuestaTriangulo);
+                            sigue = false;
+                            break;
+                        case 3: // Salir
                             sigue = false;
                             break;
                         default:
@@ -286,6 +304,8 @@ namespace FacundoMartinGordillo
                         Console.WriteLine("Y por último, ingrese el lado restante:");
                         c = pedirValorNumerico();
                         respuesta = (Double)calcularPerimetro(a, b, c);
+                        break;
+                    case 4:
                         break;
                 }
                 return respuesta;
