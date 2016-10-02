@@ -31,5 +31,12 @@ namespace ConsoleApplication1
                 return false;
             }
         }
+
+        public static String getSeguirTxt()
+        {
+            return "¿Quiere hacer otra consulta?" + Environment.NewLine +
+                "1: SI" + Environment.NewLine +
+                "OTRA TECLA: NO" + Environment.NewLine;
+        }
     }
 }

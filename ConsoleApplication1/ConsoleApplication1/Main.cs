@@ -53,6 +53,7 @@ namespace FacundoMartinGordillo
                                     f = false;
                                     break;
                                 case 2:
+                                    //TP2_02 tp02 = new TP2_02();
                                     f = false;
                                     break;
                                 default:
@@ -62,10 +63,12 @@ namespace FacundoMartinGordillo
                             }
                         } while (f == true);
 
-                        a = false;
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 2:
-                        a = false;
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 3:
                         Console.WriteLine(despedida);

@@ -9,6 +9,9 @@ namespace FacundoMartinGordillo
 {
     class TP2_01
     {
+
+        static bool a = false;
+
         static string equivocado = "VALOR ERRÓNEO, POR FAVOR INGRESE UN NUEVO VALOR." + Environment.NewLine;
 
         static string values =
@@ -16,19 +19,13 @@ namespace FacundoMartinGordillo
                     "1: ÁREA" + Environment.NewLine +
                     "2: PERÍMETRO" + Environment.NewLine +
                     "3: Salir" + Environment.NewLine;
-        public static void tp02_01()
+        public static void tp02_01() //CONSTRUCTOR
         {
             string bienvenida = "¡Ahora puede calcular el área y el perímetro de una de las siguientes formas geométricas!" + Environment.NewLine
                 + "Por favor ingrese un valor (con o sin coma). TODO SE CALCULA EN cm" + Environment.NewLine
                 + "*** 1: Calcular cuadrado" + Environment.NewLine
                 + "*** 2: Calcular triangulo" + Environment.NewLine
                 + "*** 3: Calcular circulo" + Environment.NewLine;
-            string seguirTxt =
-                "¿Quiere hacer otra consulta?" + Environment.NewLine +
-                "1: SI" + Environment.NewLine +
-                "OTRA TECLA: NO" + Environment.NewLine;
-
-            bool a = false;
             do
             {
                 Console.WriteLine(bienvenida);
@@ -37,17 +34,17 @@ namespace FacundoMartinGordillo
                 {
                     case 1:
                         new CalculoCuadrado();
-                        Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
                         a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 2:
                         new CalculoTriangulo();
-                        Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
                         a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 3:
                         new CalculoCirculo();
-                        Console.WriteLine(seguirTxt); // Tiempo muerto para ver resultado
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
                         a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     default:

@@ -17,23 +17,25 @@ namespace ConsoleApplication1
             "5. Calculame el promedio de todos los números que te meta." + Environment.NewLine + 
             "6. Salir";
 
-        List<int> listaNumeros;
+        List<int> listaNumeros = new List<int>();
 
-        bool a = false;
+        static bool a = false;
         int decision;
 
         public TP0()
         {
-            Console.WriteLine(bienvenida);
-            Console.WriteLine(decisionesPrincipales);
             do
             {
+                Console.WriteLine(bienvenida);
+                Console.WriteLine(decisionesPrincipales);
+
                 decision = ResourcesFacu.pedirValorNumerico();
                 switch (decision)
                 {
                     case 1:
                         opcionUno();
-                        a = true;
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 2:
                         Console.WriteLine("En tu pais, ¿a partir de qué edad" +
@@ -41,26 +43,33 @@ namespace ConsoleApplication1
                         int max = ResourcesFacu.pedirValorNumerico();
                         opcionDos(max);
                         listaNumeros.Add(max); // ADD
-                        a = true;
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 3:
                         opcionTres();
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 4:
                         opcionCuatro();
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 5:
                         opcionCinco();
+                        Console.WriteLine(ResourcesFacu.getSeguirTxt()); // Tiempo muerto para ver resultado
+                        a = ResourcesFacu.seguir(ResourcesFacu.pedirValorNumerico());
                         break;
                     case 6:
                         a = false;
                         break;
                     default:
-                        a = false;
+                        a = true;
                         continue;
                 }
 
-            } while (a == false);
+            } while (a == true);
             
         }
 
@@ -95,11 +104,19 @@ namespace ConsoleApplication1
             Console.WriteLine("Ingresá un número, para sumar a la lista:");
             int final = ResourcesFacu.pedirValorNumerico();
             listaNumeros.Add(final);
-
+            Console.WriteLine("Hasta ahora, el array es de: " + listaNumeros.Count
+                + " elementos, y los números que listan son: ");
+            foreach(int i in listaNumeros)
+            {
+                Console.WriteLine(i);
+            }
         }
         void opcionCuatro()
         {
-
+            int GCD(int[] numbers)
+            {
+                return numbers.Aggregate(GCD);
+            }
         }
         void opcionCinco()
         {
