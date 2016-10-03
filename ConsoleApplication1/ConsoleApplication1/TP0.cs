@@ -89,7 +89,7 @@ namespace ConsoleApplication1
             Console.WriteLine("Ingrese edad:");
             int edad = ResourcesFacu.pedirValorNumerico();
             listaNumeros.Add(edad); // ADD
-            if(edad <= edadMax)
+            if(edad < edadMax)
             {
                 Console.WriteLine("Sos menor de edad");
             }
@@ -111,15 +111,41 @@ namespace ConsoleApplication1
                 Console.WriteLine(i);
             }
         }
+        int GCD(int a, int b)
+        {
+            return b == 0 ? a : GCD(b, a % b);
+        }
         void opcionCuatro()
         {
-            int GCD(int[] numbers)
-            {
-                return numbers.Aggregate(GCD);
-            }
+            Console.WriteLine("Por favor, ingrese un valor. (¡NO INGRESE CERO!)");
+            int a = ResourcesFacu.pedirValorNumerico();
+            Console.WriteLine("Ahora ingrese otro valor.");
+            int b = ResourcesFacu.pedirValorNumerico();
+            int resultado = GCD(a, b);
+            Console.WriteLine("El mínimo común divisor de " + a + " es: " + resultado);
         }
         void opcionCinco()
         {
+            List<int> listaLoca = new List<int>();
+            System.Text.StringBuilder textoFinal = new System.Text.StringBuilder();
+
+            Console.WriteLine("Escribí los números para calcular el promedio, y pulsa ENTER.");
+            Console.WriteLine(" Para frenar, ingresá 0 + ENTER");
+
+            int valor = ResourcesFacu.pedirValorNumerico();
+
+            while(valor != 0)
+            {
+                listaLoca.Add(valor);
+                valor = ResourcesFacu.pedirValorNumerico();
+            }
+            foreach (int i in listaLoca)
+            {
+                textoFinal.Append(i).Append(", ");
+            }
+            Console.WriteLine("Los números que ingresaste fueron:" + 
+                Environment.NewLine + textoFinal.ToString());
+            Console.WriteLine("Y el promedio es de: " + listaLoca.Average());
 
         }
     }

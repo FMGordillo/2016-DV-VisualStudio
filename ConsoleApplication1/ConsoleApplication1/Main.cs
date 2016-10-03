@@ -14,15 +14,15 @@ namespace FacundoMartinGordillo
             int inputNum;
             string nuevoPrograma = 
                 "¿Qué programa quiere ejecutar?" + Environment.NewLine +
-                "0. TP 001 (el primero de todos)" + Environment.NewLine +
+                "0. TP NQV (nada que ver) (el primero de todos)" + Environment.NewLine +
                 "1. TP 01" + Environment.NewLine +
                 "2. TP 02" + Environment.NewLine +
                 "3. NINGUNO, ME QUIERO IR" + Environment.NewLine;
 
             string tp02 =
                 "¿Qué ejercicio?" + Environment.NewLine +
-                "1." + Environment.NewLine +
-                "2." + Environment.NewLine;
+                "1. Formas geométricas" + Environment.NewLine +
+                "2. Daytona (de autos)" + Environment.NewLine;
 
             string wrong = "Ingresaste un valor inválido." + Environment.NewLine;
 
@@ -49,11 +49,11 @@ namespace FacundoMartinGordillo
                             switch (inputNum)
                             {
                                 case 1:
-                                    TP2_01.tp02_01();
+                                    new TP2_01();
                                     f = false;
                                     break;
                                 case 2:
-                                    //TP2_02 tp02 = new TP2_02();
+                                    new TP2_02();
                                     f = false;
                                     break;
                                 default:

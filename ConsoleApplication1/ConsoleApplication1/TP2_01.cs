@@ -19,7 +19,7 @@ namespace FacundoMartinGordillo
                     "1: ÁREA" + Environment.NewLine +
                     "2: PERÍMETRO" + Environment.NewLine +
                     "3: Salir" + Environment.NewLine;
-        public static void tp02_01() //CONSTRUCTOR
+        public TP2_01() //"CONSTRUCTOR"
         {
             string bienvenida = "¡Ahora puede calcular el área y el perímetro de una de las siguientes formas geométricas!" + Environment.NewLine
                 + "Por favor ingrese un valor (con o sin coma). TODO SE CALCULA EN cm" + Environment.NewLine
