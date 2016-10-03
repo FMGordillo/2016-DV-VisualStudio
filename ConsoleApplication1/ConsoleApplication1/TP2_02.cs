@@ -11,9 +11,8 @@ namespace FacundoMartinGordillo
     {
         public TP2_02()
         {
-
+                
         }
-
 
         public int cilindros
         {
@@ -24,20 +23,7 @@ namespace FacundoMartinGordillo
 
             set
             {
-                cilindros = value;
-            }
-        }
-
-        public double diametro
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
+                cilindros = ConsoleApplication1.ResourcesFacu.generarRandomInt(1);
             }
         }
 
@@ -67,6 +53,19 @@ namespace FacundoMartinGordillo
             }
         }
 
+        public int diametro
+        {
+            get
+            {
+                return diametro;
+            }
+
+            set
+            {
+                diametro = ConsoleApplication1.ResourcesFacu.generarRandomInt(1);
+            }
+        }
+
         internal interface IMotor
         {
             int cilindros { get; set; }
@@ -76,7 +75,7 @@ namespace FacundoMartinGordillo
         }
         internal interface IRuedas
         {
-            double diametro{ get; set; }
+            int diametro{ get; set; }
             void iniciar();
             void frenar();
         }

@@ -8,6 +8,8 @@ namespace ConsoleApplication1
 {
     public static class ResourcesFacu
     {
+        private static Random random = new Random();
+
         public static int pedirValorNumerico()
         {
             int valorNumerico;
@@ -37,6 +39,22 @@ namespace ConsoleApplication1
             return "¿Quiere hacer otra consulta?" + Environment.NewLine +
                 "1: SI" + Environment.NewLine +
                 "OTRA TECLA: NO" + Environment.NewLine;
+        }
+
+        public static String generarRandomText(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static int generarRandomInt(int length)
+        {
+            string s = string.Empty;
+            for (int i = 0; i < length; i++)
+            {
+                s = String.Concat(s, random.Next(10).ToString());
+            }
+                return s;
         }
     }
 }
