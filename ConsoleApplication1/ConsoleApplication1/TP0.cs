@@ -110,6 +110,7 @@ namespace ConsoleApplication1
             {
                 Console.WriteLine(i);
             }
+            Console.WriteLine("La sumatoria es de: " + listaNumeros.Sum());
         }
         int GCD(int a, int b)
         {

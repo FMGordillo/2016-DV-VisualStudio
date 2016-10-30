@@ -50,11 +50,14 @@ namespace ConsoleApplication1
         public static int generarRandomInt(int length)
         {
             string s = string.Empty;
+            Int32 letstry;
             for (int i = 0; i < length; i++)
             {
                 s = String.Concat(s, random.Next(10).ToString());
             }
-                return s;
+            if (Int32.TryParse(s, out letstry))
+            { return letstry; }
+            else { return 0; }
         }
     }
 }

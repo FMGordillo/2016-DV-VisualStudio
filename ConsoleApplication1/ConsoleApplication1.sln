@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{5DABA054-EA42-416A-902B-C3FB64640DF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forms-FMGordillo", "Forms-FMGordillo\Forms-FMGordillo.csproj", "{386BB43A-7694-4C83-BF49-5568F7A3649C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5DABA054-EA42-416A-902B-C3FB64640DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DABA054-EA42-416A-902B-C3FB64640DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DABA054-EA42-416A-902B-C3FB64640DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386BB43A-7694-4C83-BF49-5568F7A3649C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386BB43A-7694-4C83-BF49-5568F7A3649C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386BB43A-7694-4C83-BF49-5568F7A3649C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386BB43A-7694-4C83-BF49-5568F7A3649C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
