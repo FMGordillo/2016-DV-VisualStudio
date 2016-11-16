@@ -1,0 +1,3 @@
+C:\Users\facu9\Source\Repos\DV_VisualBasicLearning\ConsoleApplication1\Forms-FMGordillo\bin\Debug\Forms-FMGordillo.exe.config
+C:\Users\facu9\Source\Repos\DV_VisualBasicLearning\ConsoleApplication1\Forms-FMGordillo\obj\Debug\Forms-FMGordillo.exe
+C:\Users\facu9\Source\Repos\DV_VisualBasicLearning\ConsoleApplication1\Forms-FMGordillo\obj\Debug\Forms-FMGordillo.pdb

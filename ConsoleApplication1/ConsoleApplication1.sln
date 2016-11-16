@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPsViejos-FMGordillo", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forms-AlumnoMateria-FMGordillo", "Forms-FMGordillo\Forms-AlumnoMateria-FMGordillo.csproj", "{386BB43A-7694-4C83-BF49-5568F7A3649C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP7-FMGordillo", "TP7-FMGordillo\TP7-FMGordillo.csproj", "{89BBB41C-D728-4063-AB18-085D2FE4ABDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{386BB43A-7694-4C83-BF49-5568F7A3649C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{386BB43A-7694-4C83-BF49-5568F7A3649C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{386BB43A-7694-4C83-BF49-5568F7A3649C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BBB41C-D728-4063-AB18-085D2FE4ABDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BBB41C-D728-4063-AB18-085D2FE4ABDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BBB41C-D728-4063-AB18-085D2FE4ABDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BBB41C-D728-4063-AB18-085D2FE4ABDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
