@@ -9,9 +9,9 @@ namespace TP7_FMGordillo.Models
     public class Articulo
     {
         public int id { get; set; }
-        public string codigo { get; set; }
-        public string descripcion { get; set; }
-        public double precio { get; set; }
+        public string Codigo { get; set; }
+        public string Descripcion { get; set; }
+        public double Precio { get; set; }
     }
 
     public class ArticuloDBContext : DbContext

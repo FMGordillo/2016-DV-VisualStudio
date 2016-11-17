@@ -13,5 +13,11 @@ namespace TP7_FMGordillo.Controllers
         {
             return View();
         }
+
+        // GET: CargarFacturas
+        public ActionResult CargarFactura()
+        {
+            return View();
+        }
     }
 }
